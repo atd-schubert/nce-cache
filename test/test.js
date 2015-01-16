@@ -59,7 +59,14 @@ describe('Methods of the caching extension', function(){
   var extMgr = ExtMgr(nce);
   extMgr.activateExtension(extMgr);
   extMgr.activateExtension(ext);
-
+  
+  nce.requestMiddlewares = [];
+  
+  ext.deactivate();
+  ext.uninstall();
+  ext.install();
+  ext.activate();
+  
   it('should cache content without headers and options', function(done){
     ext.cacheContent("/cacheContet/withoutHeaders/withoutOpts", {}, "just a test", done, {});
   });
@@ -117,5 +124,15 @@ describe('Methods of the caching extension', function(){
       if(err) return done(err);
       return done();
     }, {username:"test", usergroups:[], email:""});
+  });
+  it('should not get the previous cached content with the router and an incorrect user', function(done){
+    nce.middleware({headers: {}, user: {username:"other", usergroups:[], email:""}, url:"/cacheContent/allowUser/test"}, {on: function(){}, emit: function(){}, once: function(){}, end:function(str){}, writeHead:function(code, headers){if(code === 200) return done(new Error("Sending resource unallowed"));}, write:function(){}}, function(req, res){
+      done();
+    });
+  });
+  it('should get the previous cached content with the router and correct user', function(done){
+    nce.middleware({headers: {}, user: {username:"test", usergroups:[], email:""}, url:"/cacheContent/allowUser/test"}, {on: function(){}, emit: function(){}, once: function(){}, end:function(str){}, writeHead:function(code, headers){if(code === 200) return done(); done(new Error("Wrong statuscode"));}, write:function(){}}, function(req, res){
+      done(new Error("Called unallowed next"));
+    });
   });
 });

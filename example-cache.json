@@ -1,0 +1,22 @@
+{"allowUser":
+  {"username":"test"},
+  "supported":{
+    "languages":["en"],
+    "contentTypes":["text/html"],
+    "charsets":["utf-8"]
+  },
+  "fallback":{
+    "language":"en",
+    "contentType":"text/html",
+    "charset":"utf-8"
+  },
+  "allowUsers":false,
+  "disableAutoETag":false,
+  "disableAutoLastModified":false,
+  "disableAutoContentLength":false,
+  "disableAutoCacheControl":false,
+  "fallbackContentType":"text/html",
+  "fallbackCharset":"utf-8",
+  "fallbackLanguage":"en",
+  "fallbackCacheControlValue":"max-age=3600"
+}

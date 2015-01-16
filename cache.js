@@ -99,8 +99,8 @@ module.exports = function Cache(nce){
 //# Private declarations:
   var router = function cacheRouter(req, res, next){
     if(req.method === "POST") return next();
-    
-    return ext.getStream(req.url, headers, function(err, stream, headers){
+    ext.logger.debug("Try to find with router", {url:req.url, user:req.user});
+    return ext.getStream(req.url, req.headers, function(err, stream, headers){
       if(err && err.message.indexOf("ENOENT")>=0) return next();
       if(err) {
         if(ext.config.sloppyErrorHandling) {
