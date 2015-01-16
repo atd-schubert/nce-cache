@@ -1,0 +1,40 @@
+{
+  "name": "nce-cache",
+  "version": "0.0.1",
+  "description": "An extension to cache content in nce",
+  "main": "cache.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atd-schubert/nce-cache.git"
+  },
+  "keywords": [
+    "cms",
+    "nce",
+    "middleware",
+    "cache"
+  ],
+  "author": "Arne Schubert <atd.schubert@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atd-schubert/nce-cache/issues"
+  },
+  "homepage": "https://github.com/atd-schubert/nce-cache",
+  "dependencies": {
+    "mkdirp": "^0.5.0",
+    "rmdir": "^1.0.4"
+  },
+  "devDependencies": {
+    "nce": ">=0.1.0",
+    "nce-extension-manager": ">=0.0.1",
+    "nce-winston": ">=0.0.2",
+    "nce-user": ">=0.0.2"
+  },
+  "peerDependencies": {
+    "nce": ">=0.1.0",
+    "nce-winston": ">=0.0.2",
+    "nce-user": ">=0.0.2"
+  }
+}
